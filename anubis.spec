@@ -1,6 +1,4 @@
 #
-# TODO: update patches
-#
 # Conditional build:
 %bcond_with	gnutls		# use GnuTLS library instead of OpenSSL
 %bcond_without	tcp_wrappers	# disable using tcp_wrappers for access control
@@ -14,19 +12,16 @@
 Summary:	An outgoing mail processor, and the SMTP tunnel
 Summary(pl):	Procesor wychodz±cej poczty i tunel SMTP
 Name:		anubis
-Version:	3.9.96
-Release:	0.1
+Version:	4.0
+Release:	1
 License:	GPL
 Group:		Applications/Mail
-Source0:	ftp://mirddin.farlep.net/pub/alpha/anubis/%{name}-%{version}.tar.gz
-# Source0-md5:	7c2dd4cf1c3632acd2fe86f1a604b047
+Source0:	ftp://ftp.gnu.org/gnu/anubis/%{name}-%{version}.tar.gz
+# Source0-md5:	cded94ad14e528e899f5e8f7fd1aa022
 Source1:	%{name}.init
 Source2:	%{name}.pamd
 Patch0:		%{name}-info.patch
-Patch1:		%{name}-configure_gpgme.patch
-Patch2:		%{name}-boundary.patch
-Patch3:		%{name}-nolibnsl.patch
-Patch4:		%{name}-securityfixes.patch
+Patch1:		%{name}-nolibnsl.patch
 URL:		http://www.gnu.org/software/anubis/
 BuildRequires:	gettext-devel >= 0.12.1
 BuildRequires:	autoconf >= 2.54
@@ -106,11 +101,8 @@ Anubis.
 
 %prep
 %setup -q
-#%patch0 -p1
-#%patch1 -p1
-#%patch2 -p1
-#%patch3 -p1
-#%patch4 -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 %{__gettextize}
