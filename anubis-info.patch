@@ -1,14 +1,11 @@
---- anubis-3.4.6/doc/anubis.texi~	Mon Sep  9 21:16:22 2002
-+++ anubis-3.4.6/doc/anubis.texi	Mon Sep  9 21:16:22 2002
-@@ -8,9 +8,9 @@
- @include version.texi
- 
+--- anubis-3.6.2/doc/anubis.texi~	2003-01-26 18:19:50.000000000 +0100
++++ anubis-3.6.2/doc/anubis.texi	2003-01-26 18:20:38.000000000 +0100
+@@ -25,7 +25,7 @@
  @ifinfo
--@dircategory Miscellaneous
-+@dircategory Miscellaneous:
+ @dircategory GNU Packages
  @direntry
--* Anubis: (anubis).		An outgoing mail processor.
-+* Anubis: (anubis).			An outgoing mail processor
+-* Anubis: (anubis).        The GNU outgoing mail processor.
++* Anubis: (anubis).			The GNU outgoing mail processor.
  @end direntry
- This file documents the Anubis.
+ @end ifinfo
  Copyright @copyright{} 2001, 2002 Wojciech Polak.
