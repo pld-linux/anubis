@@ -30,7 +30,7 @@ Patch4:		%{name}-securityfixes.patch
 URL:		http://www.gnu.org/software/anubis/
 BuildRequires:	gettext-devel >= 0.12.1
 BuildRequires:	autoconf >= 2.54
-BuildRequires:	automake >= 1.7
+BuildRequires:	automake >= 1:1.7
 BuildRequires:	bison
 %{?with_gnutls:BuildRequires:	gnutls-devel}
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 0.3.12}
