@@ -22,8 +22,8 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-configure_gpgme.patch
 URL:		http://www.gnu.org/software/anubis/
 #BuildRequires:	gettext-devel
-BuildRequires:  autoconf >= 2.54
-BuildRequires:  automake >= 1.7
+BuildRequires:	autoconf >= 2.54
+BuildRequires:	automake >= 1.7
 BuildRequires:	texinfo
 BuildRequires:	bison
 BuildRequires:	rpm-perlprov
