@@ -1,0 +1,14 @@
+--- anubis-3.4.6/doc/anubis.texi~	Mon Sep  9 21:16:22 2002
++++ anubis-3.4.6/doc/anubis.texi	Mon Sep  9 21:16:22 2002
+@@ -8,9 +8,9 @@
+ @include version.texi
+ 
+ @ifinfo
+-@dircategory Miscellaneous
++@dircategory Miscellaneous:
+ @direntry
+-* Anubis: (anubis).		An outgoing mail processor.
++* Anubis: (anubis).			An outgoing mail processor
+ @end direntry
+ This file documents the Anubis.
+ Copyright @copyright{} 2001, 2002 Wojciech Polak.
