@@ -5,17 +5,19 @@
 %bcond_without	pam		# disable using of PAM authentcation
 %bcond_without	gpgme		# disable using gpgme library for signing/encrypting with gnupg
 %bcond_without	pcre		# disable using pcre library
+%bcond_with	mysql
+%bcond_with	postgres
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	An outgoing mail processor, and the SMTP tunnel
 Summary(pl):	Procesor wychodz±cej poczty i tunel SMTP
 Name:		anubis
-Version:	3.6.2
-Release:	4
+Version:	3.9.94
+Release:	0.8
 License:	GPL
 Group:		Applications/Mail
-Source0:	ftp://ftp.gnu.org/gnu/anubis/%{name}-%{version}.tar.gz
-# Source0-md5:	9e705e38cafe4a57025a6ad89fd73226
+Source0:	ftp://mirddin.farlep.net/pub/alpha/anubis/%{name}-%{version}.tar.gz
+# Source0-md5:	1557c499d73265aac1f87c61c5695b50
 Source1:	%{name}.init
 Source2:	%{name}.pamd
 Patch0:		%{name}-info.patch
@@ -32,8 +34,8 @@ BuildRequires:	bison
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 0.3.12}
 %{?with_tcp_wrappers:BuildRequires:	libwrap-devel}
 %{!?with_gnutls:BuildRequires:	openssl-devel >= 0.9.7d}
-%{?with_pam:BuildRequires:	pam-devel}
-%{?with_pcre:BuildRequires:	pcre-devel}
+%{?with_postgres:BuildRequires:	postgres-devel}
+%{?with_mysql:BuildRequires:	mysql-devel}
 BuildRequires:	rpm-perlprov
 BuildRequires:	texinfo
 PreReq:		rc-scripts
@@ -102,11 +104,11 @@ Anubis.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+#%patch0 -p1
+#%patch1 -p1
+#%patch2 -p1
+#%patch3 -p1
+#%patch4 -p1
 
 %build
 %{__gettextize}
@@ -119,6 +121,8 @@ Anubis.
 %{?with_pam:		--with-pam} \
 %{?with_pcre:		--with-pcre} \
 %{!?with_gpgme:		--without-gpgme} \
+%{?with_mysql:		--with-mysql} \
+%{?with_postgres:	--with-postgres} \
 %{?with_tcp_wrappers:	--with-tcp-wrappers} \
 	--disable-dependency-tracking
 
