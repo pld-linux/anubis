@@ -27,7 +27,7 @@ BuildRequires:	texinfo
 BuildRequires:	bison
 BuildRequires:	rpm-perlprov
 %{?_with_gnutls:BuildRequires:		gnutls-devel}
-%{!?_with_gnutls:BuildRequires:		openssl-devel}
+%{!?_with_gnutls:BuildRequires:		openssl-devel >= 0.9.7}
 %{!?_without_pam:BuildRequires:		pam-devel}
 %{!?_without_tcp_wrappers:BuildRequires:libwrap-devel}
 %{!?_without_pcre:BuildRequires:	pcre-devel}
