@@ -32,6 +32,7 @@ fi
 # Get service config
 [ -f "/etc/sysconfig/$SERVICE" ] && . "/etc/sysconfig/$SERVICE"
 
+RETVAL=0
 # See how we were called.
 case "$1" in
   start)
@@ -42,7 +43,6 @@ case "$1" in
 		[ $RETVAL -eq 0 ] && touch $LOCKFILE
 	else
 		msg_already_running $MSG
-		exit 1
 	fi
 	;;
   stop)
@@ -52,20 +52,20 @@ case "$1" in
 		rm -f $LOCKFILE  >/dev/null 2>&1
 	else
 		msg_not_running "$MSG"
-		exit 1
 	fi
 	;;
   status)
 	status $PROG
 	exit $?
 	;;
-  restart|reload)
+  restart|force-reload)
 	$0 stop
 	$0 start
+	exit $?
 	;;
   *)
-	msg_usage "$0 {start|stop|restart|reload|status}"
-	exit 1
+	msg_usage "$0 {start|stop|restart|force-reload|status}"
+	exit 3
 esac
 
 exit $RETVAL
