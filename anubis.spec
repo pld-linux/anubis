@@ -31,7 +31,7 @@ BuildRequires:	bison
 %{?with_gnutls:BuildRequires:	gnutls-devel}
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 0.3.12}
 %{?with_tcp_wrappers:BuildRequires:	libwrap-devel}
-%{!?with_gnutls:BuildRequires:	openssl-devel >= 0.9.7c}
+%{!?with_gnutls:BuildRequires:	openssl-devel >= 0.9.7d}
 %{?with_pam:BuildRequires:	pam-devel}
 %{?with_pcre:BuildRequires:	pcre-devel}
 BuildRequires:	rpm-perlprov
