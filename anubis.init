@@ -20,9 +20,13 @@ PROG=$SERVICE
 . /etc/sysconfig/network
 
 # Check that networking is up
-if is_no "$NETWORKING"; then
-	msg_network_down $MSG
-	exit 1
+if is_yes "${NETWORKING}"; then
+	if [ ! -f /var/lock/subsys/network ]; then
+		msg_network_down $MSG
+		exit 1
+	fi
+else
+	exit 0
 fi
 
 # Get service config
@@ -33,24 +37,24 @@ case "$1" in
   start)
   	if [ ! -f "$LOCKFILE" ]; then
 		msg_starting "$MSG"
-        	daemon $PROG
+		daemon $PROG
 		RETVAL=$?
-        	[ $RETVAL -eq 0 ] && touch $LOCKFILE
+		[ $RETVAL -eq 0 ] && touch $LOCKFILE
 	else
 		msg_already_running $MSG
 		exit 1
 	fi
-        ;;
+	;;
   stop)
   	if [ -f "$LOCKFILE" ]; then
 		msg_stopping "$MSG"
-        	killproc $PROG
+		killproc $PROG
 		rm -f $LOCKFILE  >/dev/null 2>&1
 	else
 		msg_not_running "$MSG"
 		exit 1
-        fi
-        ;;
+	fi
+	;;
   status)
 	status $PROG
 	exit $?
@@ -60,8 +64,8 @@ case "$1" in
 	$0 start
 	;;
   *)
-        msg_usage "$0 {start|stop|restart|reload|status}"
-        exit 1
+	msg_usage "$0 {start|stop|restart|reload|status}"
+	exit 1
 esac
 
 exit $RETVAL
