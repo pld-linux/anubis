@@ -59,7 +59,7 @@ package.
 %description -l pl
 GNU Anubis zajmuje siê przetwarzaniem poczty wychodz±cej. Znajduje siê on
 pomiêdzy MUA (Mail User Agent) i MTA (Mail Transport Agent) i mo¿e
-wykonywaæ w locie rózne rodzaje przetwarzania i konwersji poczty
+wykonywaæ w locie ró¿ne rodzaje przetwarzania i konwersji poczty
 wychodz±cej zale¿nie od podanych regu³, bazuj±cych na wysoce
 konfigurowalnym systemie wyra¿eñ regularnych. GNU Anubis dzia³a jako
 serwer proxy, niezale¿nie od programów pocztowych. Potrafi on zmieniaæ
@@ -70,8 +70,8 @@ jest te¿ tunelowanie po³±czeñ przez SOCKS proxy.
 Co wiêcej, GNU Anubis wspiera tak¿e remailery (czyli pozawala na anonimowe
 wysy³anie poczty).
 
-Pamiêtaj, ¿e aby u¿ywaæ plików konfiguracyjnuch u¿ytkowników, serwer ident
-musi byæ aktywny. Inaczej, u¿yty bêdzie tylko g³owny plik konfiguracyjny.
+Pamiêtaj, ¿e aby u¿ywaæ plików konfiguracyjnych u¿ytkowników, serwer ident
+musi byæ aktywny. Inaczej, u¿yty bêdzie tylko g³ówny plik konfiguracyjny.
 
 Je¶li chcesz u¿ywaæ GNU Anubis z klientem poczty mutt, zainstaluj pakiet
 msg2smtp.
