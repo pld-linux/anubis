@@ -1,0 +1,10 @@
+--- anubis-3.6.2/configure.ac.orig	2003-10-25 02:09:07.000000000 +0200
++++ anubis-3.6.2/configure.ac	2003-10-25 02:12:02.521033808 +0200
+@@ -205,7 +205,6 @@
+ 	[with_tcp_wrappers=no])
+ if test "$with_tcp_wrappers" = "yes"; then
+  AC_CHECK_LIB(wrap, main)
+- AC_CHECK_LIB(nsl, main)
+  AC_CHECK_HEADERS(tcpd.h)
+  AC_MSG_RESULT([Enabling libwrap (TCP wrappers) support...])
+ fi
