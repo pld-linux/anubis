@@ -15,7 +15,7 @@ URL:		http://anubis.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gpgme-devel
-BuildRequires:	openssl-devel
+BuildRequires:	openssl-devel >= 0.9.6m
 BuildRequires:	pcre-devel
 BuildRequires:	texinfo
 PreReq:		rc-scripts
