@@ -1,12 +1,14 @@
 #
+# TODO: update patches
+#
 # Conditional build:
 %bcond_with	gnutls		# use GnuTLS library instead of OpenSSL
 %bcond_without	tcp_wrappers	# disable using tcp_wrappers for access control
 %bcond_without	pam		# disable using of PAM authentcation
 %bcond_without	gpgme		# disable using gpgme library for signing/encrypting with gnupg
 %bcond_without	pcre		# disable using pcre library
-%bcond_with	mysql
-%bcond_with	postgres
+%bcond_with	mysql		# enable MySQL support
+%bcond_with	postgres	# enable PostgreSQL support
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	An outgoing mail processor, and the SMTP tunnel
