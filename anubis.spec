@@ -1,13 +1,11 @@
 Summary:	An outgoing mail processor, and the SMTP tunnel
 Summary(pl):	Preprocesor wychodz±cej poczty i tunel SMTP
 Name:		anubis
-Version:	3.1.0
+Version:	3.4.1
 Release:	1
 License:	GPL
 Group:		Applications/Mail
-Source0:	http://anubis.sourceforge.net/download/%{name}-%{version}.tar.gz
-Source1:	%{name}.init
-Patch0:		%{name}-libobj.patch
+Source0:	http://cesnet.dl.sourceforge.net/sourceforge/anubis/%{name}-%{version}.tar.gz
 URL:		http://anubis.sourceforge.net/
 BuildRequires:	automake
 BuildRequires:	autoconf
@@ -24,20 +22,18 @@ encryption, GnuPG (via the GPGME library), SOCKS Proxy and WinGates,
 remailers, and more.
 
 %description -l pl
-Anubis jest preprocesorem wychodz±cej poczty i tunelem miêdzy MUA and the MTA.
-Anubis wspiera rozszerzone wyra¿enia regularne, szyfrowanie TLS/SSL, GnuPG,
-SOCKS Proxy oraz WinGates, remailery i nie tylko.
+Anubis jest preprocesorem wychodz±cej poczty i tunelem miêdzy MUA and
+the MTA. Anubis wspiera rozszerzone wyra¿enia regularne, szyfrowanie
+TLS/SSL, GnuPG, SOCKS Proxy oraz WinGates, remailery i nie tylko.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-%{__aclocal}
-%{__automake}
-%{__autoconf}
 %configure \
-	--with-pcre
+	--prefix=%{_prefix} \
+	--with-pcre \
+	--disable-dependency-tracking
 %{__make}
 
 %install
@@ -48,7 +44,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %SOURCE1 $RPM_BUILD_ROOT/etc/rc.d/init.d/anubis
+install ./scripts/redhat.init $RPM_BUILD_ROOT/etc/rc.d/init.d/anubis
 install ./examples/defaultrc $RPM_BUILD_ROOT%{_sysconfdir}/anubisrc
 
 %clean
