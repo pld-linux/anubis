@@ -21,7 +21,7 @@ PROG=$SERVICE
 
 # Check that networking is up
 if is_no "$NETWORKING"; then
-	msg_Network_Down $MSG
+	msg_network_down $MSG
 	exit 1
 fi
 
@@ -37,7 +37,7 @@ case "$1" in
 		RETVAL=$?
         	[ $RETVAL -eq 0 ] && touch $LOCKFILE
 	else
-		msg_Already_Running $MSG
+		msg_already_running $MSG
 		exit 1
 	fi
         ;;
@@ -47,7 +47,7 @@ case "$1" in
         	killproc $PROG
 		rm -f $LOCKFILE  >/dev/null 2>&1
 	else
-		msg_Not_Running "$MSG"
+		msg_not_running "$MSG"
 		exit 1
         fi
         ;;
@@ -60,9 +60,8 @@ case "$1" in
 	$0 start
 	;;
   *)
-        msg_Usage "$0 {start|stop|restart|reload|status}"
+        msg_usage "$0 {start|stop|restart|reload|status}"
         exit 1
 esac
 
 exit $RETVAL
-
