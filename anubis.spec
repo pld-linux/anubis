@@ -98,7 +98,7 @@ Jest on szczególnie przydatny w po³±czeniu z procesorem poczty GNU Anubis.
 
 %build
 rm -f missing
-#%{__gettextize}
+#%%{__gettextize}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
