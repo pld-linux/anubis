@@ -1,0 +1,11 @@
+--- anubis-3.6.2.orig/configure.ac	2003-01-26 19:28:33.000000000 +0100
++++ anubis-3.6.2/configure.ac	2003-01-26 19:49:52.000000000 +0100
+@@ -79,7 +74,7 @@
+ dnl Use option --without-gpgme to NOT compile the GnuPG (GPGME library) support.
+ AC_ARG_WITH(gpgme,
+ 	[  --without-gpgme         disable the GnuPG (GPGME library) support],
+-	[with_gpgme=no],
++	[with_gpgme=$withval],
+ 	[with_gpgme=yes])
+ if test "$with_gpgme" = "no"; then
+  AC_DEFINE(NOGPG, 1, [Define to 1 if NOGPG is requested.])
