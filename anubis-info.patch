@@ -5,7 +5,7 @@
  @dircategory GNU Packages
  @direntry
 -* Anubis: (anubis).        The GNU outgoing mail processor.
-+* Anubis: (anubis).			The GNU outgoing mail processor.
++* Anubis: (anubis).			The GNU outgoing mail processor
  @end direntry
  @end ifinfo
  Copyright @copyright{} 2001, 2002 Wojciech Polak.
