@@ -19,29 +19,32 @@ PreReq:		/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Anubis is an outgoing mail processor. It goes between the MUA (Mail User Agent)
-and the MTA (Mail Transport Agent), and can perform on the fly various sorts of
-processing and conversion on the outgoing mail in accord with the sender's
-specified rules, based on a highly configurable regular expressions system.
-It operates as a proxy server, independently from mail user agents.
-Anubis can edit outgoing mail headers, encrypt and/or sign mail with the
-GNU Privacy Guard, build secure SMTP tunnels (Simple Mail Transport Protocol)
-using the TLS/SSL encryption even if your mail user agent doesn't support it,
-or tunnel a connection through a SOCKS proxy or WinGate proxy server. Moreover,
-Anubis supports the remailers (it allows sending mail in an anonymous way).
+Anubis is an outgoing mail processor. It goes between the MUA (Mail
+User Agent) and the MTA (Mail Transport Agent), and can perform on the
+fly various sorts of processing and conversion on the outgoing mail in
+accord with the sender's specified rules, based on a highly
+configurable regular expressions system. It operates as a proxy
+server, independently from mail user agents. Anubis can edit outgoing
+mail headers, encrypt and/or sign mail with the GNU Privacy Guard,
+build secure SMTP tunnels (Simple Mail Transport Protocol) using the
+TLS/SSL encryption even if your mail user agent doesn't support it, or
+tunnel a connection through a SOCKS proxy or WinGate proxy server.
+Moreover, Anubis supports the remailers (it allows sending mail in an
+anonymous way).
 
 %description -l pl
-Anubis zajmuje siê przetwarzaniem poczty wychodz±cej. Znajduje siê on pomiêdzy
-MUA (Mail User Agent) i MTA (Mail Transport Agent) i mo¿e wykonywaæ w locie
-rózne rodzaje przetwarzania i konwersji poczty wychodz±cej zale¿nie od
-podanych regu³, bazuj±cych na wysoce konfigurowalnym systemie wyra¿eñ
-regularnych.
-Anubis dzia³a jako serwer proxy, niezale¿nie od programów pocztowych.
-Potrafi on zmieniaæ nag³ówki listów, szyfrowaæ lub podpisywaæ jest przy pomocy
-GNU Privacy Guard, tworzyæ bezpieczne tunele SMTP u¿ywaj±c szyfrowania TLS/SSL
-nawet, gdy Twój program pocztowy nie ma takich mo¿liwo¶ci. Mo¿liwe jest te¿
-tunelowanie po³±czeñ przez SOCKS proxy lub serwer proxy WinGate. Co wiêcej,
-Anubis wspiera tak¿e remailery (czyli pozawala na anonimowe wysy³anie poczty).
+Anubis zajmuje siê przetwarzaniem poczty wychodz±cej. Znajduje siê on
+pomiêdzy MUA (Mail User Agent) i MTA (Mail Transport Agent) i mo¿e
+wykonywaæ w locie rózne rodzaje przetwarzania i konwersji poczty
+wychodz±cej zale¿nie od podanych regu³, bazuj±cych na wysoce
+konfigurowalnym systemie wyra¿eñ regularnych. Anubis dzia³a jako
+serwer proxy, niezale¿nie od programów pocztowych. Potrafi on zmieniaæ
+nag³ówki listów, szyfrowaæ lub podpisywaæ jest przy pomocy GNU Privacy
+Guard, tworzyæ bezpieczne tunele SMTP u¿ywaj±c szyfrowania TLS/SSL
+nawet, gdy Twój program pocztowy nie ma takich mo¿liwo¶ci. Mo¿liwe
+jest te¿ tunelowanie po³±czeñ przez SOCKS proxy lub serwer proxy
+WinGate. Co wiêcej, Anubis wspiera tak¿e remailery (czyli pozawala na
+anonimowe wysy³anie poczty).
 
 %prep
 %setup -q
