@@ -10,7 +10,7 @@
 # Set some frequently user variables
 SERVICE=anubis
 LOCKFILE=/var/lock/subsys/$SERVICE
-MSG="anubis remailer"
+MSG=$SERVICE
 PROG=$SERVICE
 
 # Source funtion library
