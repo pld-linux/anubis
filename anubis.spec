@@ -37,7 +37,7 @@ rózne rodzaje przetwarzania i konwersji poczty wychodz±cej zale¿nie od
 podanych regu³, bazuj±cych na wysoce konfigurowalnym systemie wyra¿eñ
 regularnych.
 Anubis dzia³a jako serwer proxy, niezale¿nie od programów pocztowych.
-Potrafi on zmieniaæ nag³owki listów, szyfowaæ lb podpisywaæ jest przy pomocy
+Potrafi on zmieniaæ nag³ówki listów, szyfrowaæ lub podpisywaæ jest przy pomocy
 GNU Privacy Guard, tworzyæ bezpieczne tunele SMTP u¿ywaj±c szyfrowania TLS/SSL
 nawet, gdy Twój program pocztowy nie ma takich mo¿liwo¶ci. Mo¿liwe jest te¿
 tunelowanie po³±czeñ przez SOCKS proxy lub serwer proxy WinGate. Co wiêcej,
