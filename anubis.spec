@@ -14,12 +14,12 @@
 Summary:	An outgoing mail processor, and the SMTP tunnel
 Summary(pl):	Procesor wychodz±cej poczty i tunel SMTP
 Name:		anubis
-Version:	3.9.94
-Release:	0.8
+Version:	3.9.96
+Release:	0.1
 License:	GPL
 Group:		Applications/Mail
 Source0:	ftp://mirddin.farlep.net/pub/alpha/anubis/%{name}-%{version}.tar.gz
-# Source0-md5:	1557c499d73265aac1f87c61c5695b50
+# Source0-md5:	7c2dd4cf1c3632acd2fe86f1a604b047
 Source1:	%{name}.init
 Source2:	%{name}.pamd
 Patch0:		%{name}-info.patch
