@@ -1,7 +1,7 @@
-diff -urN anubis-3.6.2/src/auth.c anubis-3.6.2-fix/src/auth.c
---- anubis-3.6.2/src/auth.c	Wed Dec  4 22:43:34 2002
-+++ anubis-3.6.2-fix/src/auth.c	Wed Feb 25 20:29:40 2004
-@@ -42,6 +42,66 @@
+diff -Nur anubis-3.4.6.orig/src/auth.c anubis-3.4.6/src/auth.c
+--- anubis-3.4.6.orig/src/auth.c	Sun Sep  8 18:35:29 2002
++++ anubis-3.4.6/src/auth.c	Tue Mar  9 16:32:14 2004
+@@ -39,6 +39,66 @@
   IDENT protocol support
  ************************/
  
@@ -65,21 +65,11 @@ diff -urN anubis-3.6.2/src/auth.c anubis-3.6.2-fix/src/auth.c
 +	return 0;
 +}
 +
- int
- auth_ident(struct sockaddr_in *addr, char *user, int size)
+ int auth_ident(struct sockaddr_in *addr, char *user, int size)
  {
-@@ -51,7 +111,8 @@
- 	int sd = 0;
- 
- 	if ((sd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
--		anubis_error(SOFT, _("IDENT: socket() failed: %s."), strerror(errno));
-+		anubis_error(SOFT, _("IDENT: socket() failed: %s."),
-+			     strerror(errno));
- 		return 0;
- 	}
- 	memcpy(&ident, addr, sizeof(ident));
-@@ -69,11 +130,7 @@
- 	info(VERBOSE, _("IDENT: connected to %s:%u"),
+ 	struct servent *sp;
+@@ -65,11 +125,7 @@
+ 	info(VERBOSE, "IDENT: connected to %s:%u",
  	inet_ntoa(ident.sin_addr), ntohs(ident.sin_port));
  
 -	#ifdef HAVE_SNPRINTF
@@ -87,58 +77,58 @@ diff -urN anubis-3.6.2/src/auth.c anubis-3.6.2-fix/src/auth.c
 -	#else
 -	sprintf(buf,
 -	#endif /* HAVE_SNPRINTF */
- 		"%u , %u"CRLF, ntohs(addr->sin_port), session.tunnel_port);
+ 	"%u , %u"CRLF, ntohs(addr->sin_port), t_portnumber);
  
  	if (send(sd, buf, strlen(buf), 0) == -1) {
-@@ -89,7 +146,8 @@
+@@ -85,7 +141,8 @@
  	close_socket(sd);
  	memset(user, 0, size);
  
 -	if (sscanf(buf, "%*[^:]: USERID :%*[^:]:%s", user) != 1) {
 +	remcrlf (buf);
 +	if (ident_extract_username(buf, user, size)) {
- 		info(VERBOSE, _("IDENT: incorrect data."));
- 		return 0;
+ 		info(VERBOSE, "IDENT: incorrect data.");
+ 		return -1;
  	}
-@@ -105,7 +163,8 @@
+@@ -101,7 +158,8 @@
  		if (rs == -1)
- 			return 0;
+ 			return -1;
  
 -		if (sscanf(buf, "%*[^ ] %*[^ ] %*[^ ] %*[^ ] %*[^ ] %s", user) != 1) {
 +		remcrlf (buf);
 +		if (crypt_extract_username(buf, user, size)) {
- 			info(VERBOSE, _("IDENT: incorrect data (DES deciphered)."));
- 			return 0;
+ 			info(VERBOSE, "IDENT: incorrect data (DES deciphered).");
+ 			return -1;
  		}
-diff -urN anubis-3.6.2/src/errs.c anubis-3.6.2-fix/src/errs.c
---- anubis-3.6.2/src/errs.c	Wed Dec  4 22:42:02 2002
-+++ anubis-3.6.2-fix/src/errs.c	Wed Feb 25 20:33:49 2004
-@@ -51,7 +51,7 @@
- 			if (options.slogfile)
- 				filelog(options.slogfile, txt);
- 			else
--				syslog(LOG_ERR | LOG_MAIL, txt);
-+				syslog(LOG_ERR | LOG_MAIL, "%s", txt);
- 
- 			if (options.ulogfile && options.uloglevel >= FAILS)
- 				filelog(options.ulogfile, txt);
-diff -urN anubis-3.6.2/src/log.c anubis-3.6.2-fix/src/log.c
---- anubis-3.6.2/src/log.c	Wed Dec  4 22:42:26 2002
-+++ anubis-3.6.2-fix/src/log.c	Wed Feb 25 20:32:30 2004
-@@ -70,7 +70,7 @@
- 		if (options.slogfile)
- 			filelog(options.slogfile, txt);
+diff -Nur anubis-3.4.6.orig/src/errs.c anubis-3.4.6/src/errs.c
+--- anubis-3.4.6.orig/src/errs.c	Sun Sep  8 18:35:39 2002
++++ anubis-3.4.6/src/errs.c	Tue Mar  9 16:32:28 2004
+@@ -44,7 +44,7 @@
+ 	if (output != SILENT) {
+ 		#ifdef HAVE_SYSLOG
+ 		if ((topt & T_DAEMON) && !(topt & T_FOREGROUND)) {
+-			syslog(LOG_ERR | LOG_MAIL, txt);
++			syslog(LOG_ERR | LOG_MAIL, "%s", txt);
+ 			filelog(ERRORS, txt);
+ 		}
  		else
--			syslog(LOG_INFO | LOG_MAIL, txt);
-+			syslog(LOG_INFO | LOG_MAIL, "%s", txt);
+diff -Nur anubis-3.4.6.orig/src/log.c anubis-3.4.6/src/log.c
+--- anubis-3.4.6.orig/src/log.c	Sun Sep  8 18:36:21 2002
++++ anubis-3.4.6/src/log.c	Tue Mar  9 16:35:43 2004
+@@ -65,7 +65,7 @@
  
- 		if (options.ulogfile && options.uloglevel >= ALL)
- 			filelog(options.ulogfile, txt);
-diff -urN anubis-3.6.2/src/ssl.c anubis-3.6.2-fix/src/ssl.c
---- anubis-3.6.2/src/ssl.c	Wed Dec  4 22:40:45 2002
-+++ anubis-3.6.2-fix/src/ssl.c	Wed Feb 25 20:33:28 2004
-@@ -64,7 +64,7 @@
- 	if (options.termlevel != SILENT) {
+ 	#ifdef HAVE_SYSLOG
+ 	if ((topt & T_DAEMON) && !(topt & T_FOREGROUND)) {
+-		syslog(LOG_INFO | LOG_MAIL, txt);
++		syslog(LOG_INFO | LOG_MAIL, "%s", txt);
+ 		filelog(ALL, txt);
+ 	}
+ 	else {
+diff -Nur anubis-3.4.6.orig/src/ssl.c anubis-3.4.6/src/ssl.c
+--- anubis-3.4.6.orig/src/ssl.c	Sun Sep  8 18:36:53 2002
++++ anubis-3.4.6/src/ssl.c	Tue Mar  9 16:35:55 2004
+@@ -62,7 +62,7 @@
+ 	if (output != SILENT) {
  		#ifdef HAVE_SYSLOG
  		if ((topt & T_DAEMON) && !(topt & T_FOREGROUND))
 -			syslog(LOG_ERR | LOG_MAIL, string_error);
