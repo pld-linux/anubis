@@ -5,7 +5,7 @@ Version:	3.4.6
 Release:	2
 License:	GPL
 Group:		Applications/Mail
-Source0:	http://cesnet.dl.sourceforge.net/sourceforge/anubis/%{name}-%{version}.tar.gz
+Source0:	http://prdownloads.sourceforge.net/anubis/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 Patch0:		%{name}-info.patch
 URL:		http://anubis.sourceforge.net/
@@ -31,9 +31,9 @@ or tunnel a connection through a SOCKS proxy or WinGate proxy server. Moreover,
 Anubis supports the remailers (it allows sending mail in an anonymous way).
 
 %description -l pl
-Anubis jest preprocesorem wychodz±cej poczty i tunelem miêdzy MUA and
-the MTA. Anubis wspiera rozszerzone wyra¿enia regularne, szyfrowanie
-TLS/SSL, GnuPG, SOCKS Proxy oraz WinGates, remailery i nie tylko.
+Anubis jest preprocesorem wychodz±cej poczty i tunelem miêdzy MUA i
+MTA. Anubis wspiera rozszerzone wyra¿enia regularne, szyfrowanie TLS/SSL,
+GnuPG, SOCKS Proxy oraz WinGates, remailery i nie tylko.
 
 %prep
 %setup -q
