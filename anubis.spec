@@ -1,15 +1,12 @@
-#
-# TODO:
-# - write PLD specyfic init script.
-#
 Summary:	An outgoing mail processor, and the SMTP tunnel
 Summary(pl):	Preprocesor wychodz±cej poczty i tunel SMTP
 Name:		anubis
 Version:	3.4.6
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Mail
 Source0:	http://cesnet.dl.sourceforge.net/sourceforge/anubis/%{name}-%{version}.tar.gz
+Source1:	%{name}.init
 Patch0:		%{name}-info.patch
 URL:		http://anubis.sourceforge.net/
 BuildRequires:	autoconf
@@ -22,10 +19,16 @@ PreReq:		/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Anubis is an outgoing mail processor, and the SMTP tunnel between the
-MUA and the MTA. It supports: extended regular expressions, TLS/SSL
-encryption, GnuPG (via the GPGME library), SOCKS Proxy and WinGates,
-remailers, and more.
+Anubis is an outgoing mail processor. It goes between the MUA (Mail User Agent)
+and the MTA (Mail Transport Agent), and can perform on the fly various sorts of
+processing and conversion on the outgoing mail in accord with the sender's
+specified rules, based on a highly configurable regular expressions system.
+It operates as a proxy server, independently from mail user agents.
+Anubis can edit outgoing mail headers, encrypt and/or sign mail with the
+GNU Privacy Guard, build secure SMTP tunnels (Simple Mail Transport Protocol)
+using the TLS/SSL encryption even if your mail user agent doesn't support it,
+or tunnel a connection through a SOCKS proxy or WinGate proxy server. Moreover,
+Anubis supports the remailers (it allows sending mail in an anonymous way).
 
 %description -l pl
 Anubis jest preprocesorem wychodz±cej poczty i tunelem miêdzy MUA and
@@ -52,7 +55,7 @@ install -d $RPM_BUILD_ROOT{/etc/rc.d/init.d,%{_sysconfdir}}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install ./scripts/redhat.init $RPM_BUILD_ROOT/etc/rc.d/init.d/anubis
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/anubis
 install ./examples/defaultrc $RPM_BUILD_ROOT%{_sysconfdir}/anubisrc
 
 %clean
