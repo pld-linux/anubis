@@ -2,7 +2,7 @@ Summary:	An outgoing mail processor, and the SMTP tunnel
 Summary(pl):	Preprocesor wychodz±cej poczty i tunel SMTP
 Name:		anubis
 Version:	3.4.6
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Mail
 Source0:	http://prdownloads.sourceforge.net/anubis/%{name}-%{version}.tar.gz
@@ -31,9 +31,17 @@ or tunnel a connection through a SOCKS proxy or WinGate proxy server. Moreover,
 Anubis supports the remailers (it allows sending mail in an anonymous way).
 
 %description -l pl
-Anubis jest preprocesorem wychodz±cej poczty i tunelem miêdzy MUA i
-MTA. Anubis wspiera rozszerzone wyra¿enia regularne, szyfrowanie TLS/SSL,
-GnuPG, SOCKS Proxy oraz WinGates, remailery i nie tylko.
+Anubis zajmuje siê przetwarzaniem poczty wychodz±cej. Znajduje siê on pomiêdzy
+MUA (Mail User Agent) i MTA (Mail Transport Agent) i mo¿e wykonywaæ w locie
+rózne rodzaje przetwarzania i konwersji poczty wychodz±cej zale¿nie od
+podanych regu³, bazuj±cych na wysoce konfigurowalnym systemie wyra¿eñ
+regularnych.
+Anubis dzia³a jako serwer proxy, niezale¿nie od programów pocztowych.
+Potrafi on zmieniaæ nag³owki listów, szyfowaæ lb podpisywaæ jest przy pomocy
+GNU Privacy Guard, tworzyæ bezpieczne tunele SMTP u¿ywaj±c szyfrowania TLS/SSL
+nawet, gdy Twój program pocztowy nie ma takich mo¿liwo¶ci. Mo¿liwe jest te¿
+tunelowanie po³±czeñ przez SOCKS proxy lub serwer proxy WinGate. Co wiêcej,
+Anubis wspiera tak¿e remailery (czyli pozawala na anonimowe wysy³anie poczty).
 
 %prep
 %setup -q
