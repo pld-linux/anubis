@@ -31,7 +31,6 @@ TLS/SSL, GnuPG, SOCKS Proxy oraz WinGates, remailery i nie tylko.
 
 %build
 %configure \
-	--prefix=%{_prefix} \
 	--with-pcre \
 	--disable-dependency-tracking
 %{__make}
