@@ -15,6 +15,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Mail
 Source0:	ftp://ftp.gnu.org/gnu/anubis/%{name}-%{version}.tar.gz
+# Source0-md5:	9e705e38cafe4a57025a6ad89fd73226
 Source1:	%{name}.init
 Source2:	%{name}.pamd
 Patch0:		%{name}-info.patch
