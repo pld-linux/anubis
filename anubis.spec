@@ -1,7 +1,7 @@
 Summary:	An outgoing mail processor, and the SMTP tunnel
 Summary(pl):	Preprocesor wychodz±cej poczty i tunel SMTP
 Name:		anubis
-Version:	3.0.1
+Version:	3.1.0
 Release:	1
 License:	GPL
 Group:		Applications/Mail
@@ -9,6 +9,8 @@ Source0:	http://anubis.sourceforge.net/download/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 Patch0:		%{name}-libobj.patch
 URL:		http://anubis.sourceforge.net/
+BuildRequires:	automake
+BuildRequires:	autoconf
 BuildRequires:	openssl-devel
 BuildRequires:	gpgme-devel
 BuildRequires:	pcre-devel
@@ -71,7 +73,7 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS README INSTALL NEWS ChangeLog TUTORIAL TODO examples
-%attr(700,root,root) %{_sbindir}/anubis
-%attr(755,root,root) /etc/rc.d/init.d/anubis
+%attr(755,root,root) %{_sbindir}/anubis
+%attr(750,root,root) /etc/rc.d/init.d/anubis
 %attr(600,root,root) %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/anubisrc
 %{_mandir}/man1/*
