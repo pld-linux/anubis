@@ -1,10 +1,10 @@
 #
 # Conditional build:
 %bcond_with	gnutls		# use GnuTLS library instead of OpenSSL
-%bcond_without	tcp_wrappers	# disable using tcp_wrappers for access control
-%bcond_without	pam		# disable using of PAM authentcation
 %bcond_without	gpgme		# disable using gpgme library for signing/encrypting with gnupg
+%bcond_without	pam		# disable using of PAM authentication
 %bcond_without	pcre		# disable using pcre library
+%bcond_without	tcp_wrappers	# disable using tcp_wrappers for access control
 %bcond_with	mysql		# enable MySQL support
 %bcond_with	postgres	# enable PostgreSQL support
 #
@@ -28,7 +28,8 @@ BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	bison
 %{?with_gnutls:BuildRequires:	gnutls-devel}
-%{?with_gpgme:BuildRequires:	gpgme-devel >= 0.3.12}
+%{?with_gpgme:BuildRequires:	gpgme-devel >= 1:1.0.0}
+BuildRequires:	guile-devel >= 5:1.6
 %{?with_tcp_wrappers:BuildRequires:	libwrap-devel}
 %{!?with_gnutls:BuildRequires:	openssl-devel >= 0.9.7d}
 %{?with_postgres:BuildRequires:	postgres-devel}
@@ -169,8 +170,9 @@ fi
 %attr(600,root,root) %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/anubisrc
 %{?with_pam:%attr(640,root,root) %config(noreplace) %verify(not md5 size mtime) /etc/pam.d/anubis}
 %attr(755,root,root) %{_sbindir}/anubis
+%{_datadir}/anubis
 %{_mandir}/man1/*
-%{_infodir}/*info*
+%{_infodir}/*.info*
 
 %files -n msg2smtp
 %defattr(644,root,root,755)
