@@ -11,7 +11,7 @@ Summary:	An outgoing mail processor, and the SMTP tunnel
 Summary(pl):	Procesor wychodz±cej poczty i tunel SMTP
 Name:		anubis
 Version:	3.6.2
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Mail
 Source0:	ftp://ftp.gnu.org/gnu/anubis/%{name}-%{version}.tar.gz
@@ -22,6 +22,7 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-configure_gpgme.patch
 Patch2:		%{name}-boundary.patch
 Patch3:		%{name}-nolibnsl.patch
+Patch4:		%{name}-securityfixes.patch
 URL:		http://www.gnu.org/software/anubis/
 BuildRequires:	gettext-devel >= 0.12.1
 BuildRequires:	autoconf >= 2.54
@@ -105,6 +106,7 @@ Anubis.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %{__gettextize}
