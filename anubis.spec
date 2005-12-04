@@ -36,7 +36,7 @@ BuildRequires:	guile-devel >= 5:1.6
 %{?with_mysql:BuildRequires:	mysql-devel}
 BuildRequires:	rpm-perlprov
 BuildRequires:	texinfo
-PreReq:		rc-scripts
+Requires:	rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 Requires:	identserver
 Requires:	pam >= 0.77.3
@@ -72,9 +72,9 @@ serwer proxy, niezale¿nie od programów pocztowych. Potrafi on zmieniaæ
 nag³ówki listów, szyfrowaæ lub podpisywaæ jest przy pomocy GNU Privacy
 Guard, tworzyæ bezpieczne tunele SMTP u¿ywaj±c szyfrowania TLS/SSL
 nawet, gdy Twój program pocztowy nie ma takich mo¿liwo¶ci. Mo¿liwe
-jest te¿ tunelowanie po³±czeñ przez SOCKS proxy.
-Co wiêcej, GNU Anubis wspiera tak¿e remailery (czyli pozawala na
-anonimowe wysy³anie poczty).
+jest te¿ tunelowanie po³±czeñ przez SOCKS proxy. Co wiêcej, GNU Anubis
+wspiera tak¿e remailery (czyli pozawala na anonimowe wysy³anie
+poczty).
 
 Pamiêtaj, ¿e aby u¿ywaæ plików konfiguracyjnych u¿ytkowników, serwer
 ident musi byæ aktywny. Inaczej, u¿yty bêdzie tylko g³ówny plik
@@ -167,8 +167,8 @@ fi
 %doc AUTHORS README INSTALL NEWS ChangeLog TODO examples/anubisrc
 %{?with_pam:%doc examples/pam}
 %attr(754,root,root) /etc/rc.d/init.d/anubis
-%attr(600,root,root) %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/anubisrc
-%{?with_pam:%attr(640,root,root) %config(noreplace) %verify(not md5 size mtime) /etc/pam.d/anubis}
+%attr(600,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/anubisrc
+%{?with_pam:%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/anubis}
 %attr(755,root,root) %{_sbindir}/anubis
 %{_datadir}/anubis
 %{_mandir}/man1/*
