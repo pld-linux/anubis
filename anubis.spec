@@ -23,23 +23,23 @@ Source2:	%{name}.pamd
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-nolibnsl.patch
 URL:		http://www.gnu.org/software/anubis/
-BuildRequires:	gettext-devel >= 0.12.1
 BuildRequires:	autoconf >= 2.54
 BuildRequires:	automake >= 1:1.7
 BuildRequires:	bison
+BuildRequires:	gettext-devel >= 0.12.1
 %{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.5}
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 1:1.0.0}
 BuildRequires:	guile-devel >= 5:1.6
 %{?with_tcp_wrappers:BuildRequires:	libwrap-devel}
+%{?with_mysql:BuildRequires:	mysql-devel}
 %{!?with_gnutls:BuildRequires:	openssl-devel >= 0.9.7d}
 %{?with_postgres:BuildRequires:	postgres-devel}
-%{?with_mysql:BuildRequires:	mysql-devel}
 BuildRequires:	rpm-perlprov
 BuildRequires:	texinfo
-Requires:	rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 Requires:	identserver
 Requires:	pam >= 0.77.3
+Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
