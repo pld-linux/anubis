@@ -35,6 +35,7 @@ BuildRequires:	guile-devel >= 5:1.6
 %{!?with_gnutls:BuildRequires:	openssl-devel >= 0.9.7d}
 %{?with_postgres:BuildRequires:	postgres-devel}
 BuildRequires:	rpm-perlprov
+BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	texinfo
 Requires(post,preun):	/sbin/chkconfig
 Requires:	identserver
@@ -143,19 +144,13 @@ rm -fr $RPM_BUILD_ROOT
 
 %post
 /sbin/chkconfig --add anubis
-if [ -f %{_localstatedir}/lock/subsys/anubis ]; then
-	/etc/rc.d/init.d/anubis restart >&2
-else
-	echo "Run \"/etc/rc.d/init.d/anubis start\" to start anubis." >&2
-fi
+%service anubis restart
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 
 %preun
 if [ "$1" = "0" ]; then
-	if [ -f %{_localstatedir}/lock/subsys/anubis ]; then
-		/etc/rc.d/init.d/anubis stop
-	fi
+	%service anubis stop
 	/sbin/chkconfig --del anubis
 fi
 
