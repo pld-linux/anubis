@@ -13,7 +13,7 @@ Summary:	An outgoing mail processor, and the SMTP tunnel
 Summary(pl):	Procesor wychodz±cej poczty i tunel SMTP
 Name:		anubis
 Version:	4.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Mail
 Source0:	ftp://ftp.gnu.org/gnu/anubis/%{name}-%{version}.tar.gz
@@ -138,9 +138,10 @@ install ./examples/2anubisrc $RPM_BUILD_ROOT%{_sysconfdir}/anubisrc
 cp -f ./examples/1anubisrc examples/anubisrc
 
 %find_lang %{name}
+rm -f $RPM_BUILD_ROOT%{_datadir}/info/dir
 
 %clean
-rm -fr $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/chkconfig --add anubis
