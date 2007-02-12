@@ -10,7 +10,7 @@
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	An outgoing mail processor, and the SMTP tunnel
-Summary(pl.UTF-8):   Procesor wychodzącej poczty i tunel SMTP
+Summary(pl.UTF-8):	Procesor wychodzącej poczty i tunel SMTP
 Name:		anubis
 Version:	4.0
 Release:	3
@@ -86,7 +86,7 @@ pakiet msg2smtp.
 
 %package -n msg2smtp
 Summary:	msg2smtp takes mail at input and relays it to an SMTP server
-Summary(pl.UTF-8):   msg2smtp wysyła pocztę przyjmowaną na wejściu do serwera SMTP
+Summary(pl.UTF-8):	msg2smtp wysyła pocztę przyjmowaną na wejściu do serwera SMTP
 Group:		Applications/Mail
 
 %description -n msg2smtp
