@@ -10,7 +10,7 @@
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	An outgoing mail processor, and the SMTP tunnel
-Summary(pl):	Procesor wychodz±cej poczty i tunel SMTP
+Summary(pl.UTF-8):   Procesor wychodzÄ…cej poczty i tunel SMTP
 Name:		anubis
 Version:	4.0
 Release:	3
@@ -63,30 +63,30 @@ be running. Without it only system-wide configuration file is used.
 If you want to use GNU Anubis with mutt mail client, install msg2smtp
 package.
 
-%description -l pl
-GNU Anubis zajmuje siê przetwarzaniem poczty wychodz±cej. Znajduje siê
-on pomiêdzy MUA (Mail User Agent) i MTA (Mail Transport Agent) i mo¿e
-wykonywaæ w locie ró¿ne rodzaje przetwarzania i konwersji poczty
-wychodz±cej zale¿nie od podanych regu³, bazuj±cych na wysoce
-konfigurowalnym systemie wyra¿eñ regularnych. GNU Anubis dzia³a jako
-serwer proxy, niezale¿nie od programów pocztowych. Potrafi on zmieniaæ
-nag³ówki listów, szyfrowaæ lub podpisywaæ jest przy pomocy GNU Privacy
-Guard, tworzyæ bezpieczne tunele SMTP u¿ywaj±c szyfrowania TLS/SSL
-nawet, gdy Twój program pocztowy nie ma takich mo¿liwo¶ci. Mo¿liwe
-jest te¿ tunelowanie po³±czeñ przez SOCKS proxy. Co wiêcej, GNU Anubis
-wspiera tak¿e remailery (czyli pozawala na anonimowe wysy³anie
+%description -l pl.UTF-8
+GNU Anubis zajmuje siÄ™ przetwarzaniem poczty wychodzÄ…cej. Znajduje siÄ™
+on pomiÄ™dzy MUA (Mail User Agent) i MTA (Mail Transport Agent) i moÅ¼e
+wykonywaÄ‡ w locie rÃ³Å¼ne rodzaje przetwarzania i konwersji poczty
+wychodzÄ…cej zaleÅ¼nie od podanych reguÅ‚, bazujÄ…cych na wysoce
+konfigurowalnym systemie wyraÅ¼eÅ„ regularnych. GNU Anubis dziaÅ‚a jako
+serwer proxy, niezaleÅ¼nie od programÃ³w pocztowych. Potrafi on zmieniaÄ‡
+nagÅ‚Ã³wki listÃ³w, szyfrowaÄ‡ lub podpisywaÄ‡ jest przy pomocy GNU Privacy
+Guard, tworzyÄ‡ bezpieczne tunele SMTP uÅ¼ywajÄ…c szyfrowania TLS/SSL
+nawet, gdy TwÃ³j program pocztowy nie ma takich moÅ¼liwoÅ›ci. MoÅ¼liwe
+jest teÅ¼ tunelowanie poÅ‚Ä…czeÅ„ przez SOCKS proxy. Co wiÄ™cej, GNU Anubis
+wspiera takÅ¼e remailery (czyli pozawala na anonimowe wysyÅ‚anie
 poczty).
 
-Pamiêtaj, ¿e aby u¿ywaæ plików konfiguracyjnych u¿ytkowników, serwer
-ident musi byæ aktywny. Inaczej, u¿yty bêdzie tylko g³ówny plik
+PamiÄ™taj, Å¼e aby uÅ¼ywaÄ‡ plikÃ³w konfiguracyjnych uÅ¼ytkownikÃ³w, serwer
+ident musi byÄ‡ aktywny. Inaczej, uÅ¼yty bÄ™dzie tylko gÅ‚Ã³wny plik
 konfiguracyjny.
 
-Je¶li chcesz u¿ywaæ GNU Anubis z klientem poczty mutt, zainstaluj
+JeÅ›li chcesz uÅ¼ywaÄ‡ GNU Anubis z klientem poczty mutt, zainstaluj
 pakiet msg2smtp.
 
 %package -n msg2smtp
 Summary:	msg2smtp takes mail at input and relays it to an SMTP server
-Summary(pl):	msg2smtp wysy³a pocztê przyjmowan± na wej¶ciu do serwera SMTP
+Summary(pl.UTF-8):   msg2smtp wysyÅ‚a pocztÄ™ przyjmowanÄ… na wejÅ›ciu do serwera SMTP
 Group:		Applications/Mail
 
 %description -n msg2smtp
@@ -95,10 +95,10 @@ The msg2smtp script is a bridge between MUA programs which use
 particularly useful when used in connection with GNU Anubis mail
 processor.
 
-%description -n msg2smtp -l pl
-Skrypt msg2smtp jest pomostem miêdzy programami pocztowymi u¿ywaj±cymi
-polecenia "sendmail" do wysy³ania listów (np. Mutt), a serwerem smtp.
-Jest on szczególnie przydatny w po³±czeniu z procesorem poczty GNU
+%description -n msg2smtp -l pl.UTF-8
+Skrypt msg2smtp jest pomostem miÄ™dzy programami pocztowymi uÅ¼ywajÄ…cymi
+polecenia "sendmail" do wysyÅ‚ania listÃ³w (np. Mutt), a serwerem smtp.
+Jest on szczegÃ³lnie przydatny w poÅ‚Ä…czeniu z procesorem poczty GNU
 Anubis.
 
 %prep
