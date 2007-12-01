@@ -12,27 +12,32 @@
 Summary:	An outgoing mail processor, and the SMTP tunnel
 Summary(pl.UTF-8):	Procesor wychodzącej poczty i tunel SMTP
 Name:		anubis
-Version:	4.0
-Release:	3
-License:	GPL
+Version:	4.1
+Release:	1
+License:	GPL v3+
 Group:		Applications/Mail
 Source0:	ftp://ftp.gnu.org/gnu/anubis/%{name}-%{version}.tar.gz
-# Source0-md5:	cded94ad14e528e899f5e8f7fd1aa022
+# Source0-md5:	fbbf97ee8e973347e0412bfeef14aa6a
 Source1:	%{name}.init
 Source2:	%{name}.pamd
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-nolibnsl.patch
+Patch2:		%{name}-pl.po-update.patch
 URL:		http://www.gnu.org/software/anubis/
-BuildRequires:	autoconf >= 2.54
-BuildRequires:	automake >= 1:1.7
+BuildRequires:	autoconf >= 2.59
+BuildRequires:	automake >= 1:1.8.3
 BuildRequires:	bison
-BuildRequires:	gettext-devel >= 0.12.1
+BuildRequires:	gdbm-devel
+BuildRequires:	gettext-devel >= 0.16
 %{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.5}
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 1:1.0.0}
-BuildRequires:	guile-devel >= 5:1.6
+BuildRequires:	gsasl-devel >= 0.2.3
+BuildRequires:	guile-devel >= 5:1.8.0
 %{?with_tcp_wrappers:BuildRequires:	libwrap-devel}
 %{?with_mysql:BuildRequires:	mysql-devel}
 %{!?with_gnutls:BuildRequires:	openssl-devel >= 0.9.7d}
+%{?with_pam:BuildRequires:	pam-devel}
+BuildRequires:	pcre-devel
 %{?with_postgres:BuildRequires:	postgres-devel}
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpmbuild(macros) >= 1.268
@@ -105,6 +110,9 @@ Anubis.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+
+rm -f po/stamp-po
 
 %build
 %{__gettextize}
@@ -160,15 +168,16 @@ fi
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS README INSTALL NEWS ChangeLog TODO examples/anubisrc
-%{?with_pam:%doc examples/pam}
+%doc AUTHORS README INSTALL NEWS ChangeLog TODO examples/anubisrc %{?with_pam:examples/pam}
 %attr(754,root,root) /etc/rc.d/init.d/anubis
 %attr(600,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/anubisrc
 %{?with_pam:%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/anubis}
+%attr(755,root,root) %{_bindir}/anubisusr
 %attr(755,root,root) %{_sbindir}/anubis
+%attr(755,root,root) %{_sbindir}/anubisadm
 %{_datadir}/anubis
-%{_mandir}/man1/*
-%{_infodir}/*.info*
+%{_mandir}/man1/anubis.1*
+%{_infodir}/anubis.info*
 
 %files -n msg2smtp
 %defattr(644,root,root,755)
