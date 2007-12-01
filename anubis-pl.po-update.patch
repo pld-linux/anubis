@@ -1,0 +1,495 @@
+--- anubis-4.1/po/pl.po.orig	2007-11-04 16:58:30.000000000 +0100
++++ anubis-4.1/po/pl.po	2007-12-01 00:48:28.580523307 +0100
+@@ -9,10 +9,10 @@
+ #: env.opt:43
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: anubis 4.0\n"
++"Project-Id-Version: anubis 4.1\n"
+ "Report-Msgid-Bugs-To: bug-anubis@gnu.org\n"
+ "POT-Creation-Date: 2007-11-04 16:58+0100\n"
+-"PO-Revision-Date: 2006-12-21 18:15+0100\n"
++"PO-Revision-Date: 2007-11-31 00:30+0100\n"
+ "Last-Translator: Sergey Poznyakoff <gray@gnu.org>\n"
+ "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
+ "MIME-Version: 1.0\n"
+@@ -139,14 +139,13 @@
+ "Proces potomny [%lu] zakoñczy³ pracê. %s. Pozosta³o %d procesów potomnych."
+ 
+ #: src/daemon.c:120
+-#, fuzzy, c-format
++#, c-format
+ msgid "Local program [%lu] finished. %s"
+-msgstr "Program lokalny [%lu] zakoñczy³ siê."
++msgstr "Program lokalny [%lu] zakoñczy³ siê. %s"
+ 
+ #: src/daemon.c:161
+-#, fuzzy
+ msgid "WARNING: An unprivileged user cannot be resolved. Verify your settings!"
+-msgstr "OSTRZE¯ENIE: Brak nazwy u¿ytkownika nieuprzywilejowanego!"
++msgstr "OSTRZE¯ENIE: Brak nazwy u¿ytkownika nieuprzywilejowanego. Proszê sprawdziæ ustawienia!"
+ 
+ #: src/daemon.c:171
+ msgid "WARNING: An unprivileged user has not been specified!"
+@@ -186,194 +185,158 @@
+ 
+ #: env.opt:41 env.opt:51
+ msgid "[HOST:]PORT"
+-msgstr ""
++msgstr "[HOST:]PORT"
+ 
+ #: env.opt:41
+-#, fuzzy
+ msgid ""
+ "Specify the TCP port on which GNU Anubis listens for connections; the "
+ "default HOST is INADDR_ANY, and default PORT is 24 (private mail system)"
+ msgstr ""
+-" -b, --bind [HOST:]PORT       Ustala port TCP na którym GNU Anubis "
+-"nas³uchuje.\n"
+-"                              Domniemany HOST INADDR_ANY, port -- 24 "
+-"(prywatny\n"
+-"                              system pocztowy)."
++"Ulstala port TCP, na którym nas³uchuje GNU Anubis; domniemany HOST to INADDR_ANY, a PORT - 24 (prywatny system pocztowy)"
+ 
+ #: env.opt:51
+-#, fuzzy
+ msgid "Specify a remote SMTP host name or IP address; the default is 25"
+-msgstr ""
+-" -r, --remote-mta HOST[:PORT] Podaje nazwê lub IP zdalnego hostu SMTP.\n"
+-"                              Domniemany numer portu 25."
++msgstr "Podaje nazwê lub IP zdalnego hosta SMTP; domniemany numer portu 25"
+ 
+ #: env.opt:58 env.opt:117 env.opt:149
+ msgid "FILE"
+-msgstr ""
++msgstr "PLIK"
+ 
+ #: env.opt:58
+-#, fuzzy
+ msgid ""
+ "Execute a local SMTP server, which works on standard input and output (inetd-"
+ "type program); this option excludes the `--remote-mta' option"
+ msgstr ""
+-" -l, --local-mta FILE         W³±cza u¿ycie lokalnego serweru SMTP który\n"
+-"                              pracuje ze standardowymi wej¶ciem i wyj¶ciem\n"
+-"                              (program typu inetd).\n"
+-"                              U¿ycie tej opcji wy³±cza u¿ycie opcji\n"
+-"                              --remote-mta"
++"W³±cza u¿ycie lokalnego serwera SMTP który pracuje ze standardowymi wej¶ciem\n"
++"i wyj¶ciem (program typu inetd). U¿ycie tej opcji wy³±cza u¿ycie opcji\n"
++"`--remote-mta'"
+ 
+ #: env.opt:71
+ msgid "MODE"
+-msgstr ""
++msgstr "TRYB"
+ 
+ #: env.opt:71
+ msgid ""
+ "Select operation mode; MODE is one of \"transparent\", \"auth\" or \"mda\""
+-msgstr ""
++msgstr "Wybiera tryb pracy; TRYB to \"transparent\", \"auth\" lub \"mda\""
+ 
+ #: env.opt:79
+ msgid "Foreground mode"
+-msgstr ""
++msgstr "Tryb pierwszoplanowy"
+ 
+ #: env.opt:85
+ msgid "EMAIL"
+-msgstr ""
++msgstr "E-MAIL"
+ 
+ #: env.opt:85
+ msgid "Specify sender address (implies MDA mode)"
+-msgstr ""
++msgstr "Ustala adres nadawcy (implikuje tryb MDA)"
+ 
+ #: env.opt:91
+-#, fuzzy
+ msgid ""
+ "Use the SMTP protocol (OMP/Tunnel) as described in RFC 821 on standard input "
+ "and output"
+ msgstr ""
+-" -i, --stdio                  U¿yj protoko³u SMTP (OMP/Tunnel, RFC 821) na\n"
+-"                              standardowym wej¶ciu/wyj¶ciu."
++"U¿yj protoko³u SMTP (OMP/Tunnel, RFC 821) na standardowym wej¶ciu i wyj¶ciu."
+ 
+ #: env.opt:98
+-#, fuzzy
+ msgid "Output options"
+-msgstr "Opcje kontroluj±ce wyj¶cie:\n"
++msgstr "Opcje kontroluj±ce wyj¶cie"
+ 
+ #: env.opt:100
+ msgid "Work silently"
+-msgstr ""
++msgstr "Wy³±cza komunikaty o b³êdach"
+ 
+ #: env.opt:105
+ msgid "Work noisily"
+-msgstr ""
++msgstr "Wy¶wietla du¿o informacji diagnostycznych"
+ 
+ #: env.opt:110
+ msgid "Debug mode"
+-msgstr ""
++msgstr "Tryb odpluskwiania"
+ 
+ #: env.opt:115
+-#, fuzzy
+ msgid "Miscellaneous options"
+-msgstr ""
+-"\n"
+-"Ró¿ne opcje:\n"
++msgstr "Ró¿ne opcje"
+ 
+ #: env.opt:117
+-#, fuzzy
+ msgid "Specify alternate system configuration file"
+-msgstr ""
+-" --altrc PLIK                 Podaje nazwê alternatywnego pliku "
+-"konfiguracyjnego."
++msgstr "Podaje nazwê alternatywnego pliku konfiguracyjnego"
+ 
+ #: env.opt:124
+-#, fuzzy
+ msgid "Ignore system configuration file"
+-msgstr "Odczytanie systemowego pliku konfiguracyjnego %s..."
++msgstr "Ignorowanie systemowego pliku konfiguracyjnego"
+ 
+ #: env.opt:130
+ msgid "DEBUG-LEVEL"
+-msgstr ""
++msgstr "POZIOM-DIAGNOSTYKI"
+ 
+ #: env.opt:130
+-#, fuzzy
+ msgid "Run the configuration file syntax checker"
+-msgstr ""
+-" -c, --check-config           Uruchomienie kontroli sk³adni pliku\n"
+-"                              konfiguracyjnego."
++msgstr "Uruchomienie kontroli sk³adni pliku konfiguracyjnego"
+ 
+ #: env.opt:137
+-#, fuzzy
+ msgid "Print a list of configuration options used to build GNU Anubis"
+-msgstr ""
+-" --show-config-options        Wypisanie warto¶ci domy¶lnych, u¿ytych "
+-"podczas\n"
+-"                              budowy GNU Anubisa."
++msgstr "Wypisanie warto¶ci domy¶lnych, u¿ytych podczas budowy GNU Anubisa"
+ 
+ #: env.opt:143
+-#, fuzzy
+ msgid "Do not check user configuration file permissions"
+-msgstr ""
+-" --relax-perm-check           Wy³±cza sprawdzanie uprawnieñ do pliku\n"
+-"                              konfiguracyjnego u¿ytkownika."
++msgstr "Wy³±cza sprawdzanie uprawnieñ do pliku konfiguracyjnego u¿ytkownika"
+ 
+ #: env.opt:149
+ msgid "Store the PID of the running daemon in FILE"
+-msgstr ""
++msgstr "Zapisanie PID-u dzia³aj±cego demona w PLIKU"
+ 
+ #: env.opt:155
+-#, fuzzy
+ msgid "Other options"
+-msgstr "Opcje kontroluj±ce wyj¶cie:\n"
++msgstr "Pozosta³e opcje"
+ 
+ #: env.opt:155
+ msgid "Give this help list"
+-msgstr ""
++msgstr "Wy¶wietlenie tego opisu"
+ 
+ #: env.opt:155
+ msgid "Give a short usage message"
+-msgstr ""
++msgstr "Wy¶wietlenie krótkiej informacji o sk³adni"
+ 
+ #: env.opt:155
+ msgid "Print program version"
+-msgstr ""
++msgstr "Wypisanie wersji programu"
+ 
+ #: env.opt:41
+ msgid "SMTP message submission daemon."
+-msgstr ""
++msgstr "Demon przekazuj±cy wiadomo¶ci SMTP"
+ 
+ #: env.opt:143 env.opt:287
+ msgid "Usage:"
+-msgstr ""
++msgstr "Sk³adnia:"
+ 
+ #: env.opt:143
+ msgid "OPTION"
+-msgstr ""
++msgstr "OPCJA"
+ 
+ #: env.opt:255
+ msgid ""
+ "Mandatory or optional arguments to long options are also mandatory or "
+ "optional for any corresponding short options."
+-msgstr ""
++msgstr "Argumenty obowi±zkowe i opcjonalne dla opcji d³ugich s± obowi±zkowe i opcjonalne dla odpowiadaj±cych im opcji krótkich."
+ 
+ #: env.opt:259
+-#, fuzzy, c-format
++#, c-format
+ msgid "Report bugs to %s.\n"
+-msgstr ""
+-"\n"
+-"Prosimy zg³aszaæ b³êdy na adres <%s>.\n"
++msgstr "Prosimy zg³aszaæ b³êdy na adres %s.\n"
+ 
+ #: env.opt:68 src/exec.c:172
+-#, fuzzy
+ msgid "argcv_get failed"
+-msgstr "accept() nie powiod³a siê"
++msgstr "argcv_get nie powiod³o siê"
+ 
+ #: env.opt:179
+ msgid "--mode=mda requires --local-mta"
+-msgstr ""
++msgstr "--mode=mda wymaga --local-mta"
+ 
+ #: env.opt:181
+-#, fuzzy
+ msgid "Missing recipient addresses"
+-msgstr "brak warto¶ci zast±pienia"
++msgstr "Brak adresów adresatów"
+ 
+ #: env.opt:272
+ #, c-format
+@@ -606,9 +569,9 @@
+ msgstr "socketpair() nie powiod³a siê"
+ 
+ #: src/exec.c:108
+-#, fuzzy, c-format
++#, c-format
+ msgid "Executing %s..."
+-msgstr "Uruchomienie %s %s..."
++msgstr "Uruchamianie %s..."
+ 
+ #: src/exec.c:118
+ msgid "fork() failed"
+@@ -742,7 +705,7 @@
+ 
+ #: src/main.c:56
+ msgid "Not enough memory"
+-msgstr ""
++msgstr "Za ma³o pamiêci"
+ 
+ #: src/map.c:65
+ #, c-format
+@@ -754,9 +717,9 @@
+ msgstr "Mapa translacji: niepoprawna sk³adnia."
+ 
+ #: src/misc.c:120
+-#, fuzzy, c-format
++#, c-format
+ msgid "Invalid port number: %s"
+-msgstr "Niepoprawna nazwa u¿ytkownika: %s"
++msgstr "Niepoprawny numer portu: %s"
+ 
+ #: src/misc.c:348
+ msgid "Can't find out my own hostname"
+@@ -948,14 +911,14 @@
+ #, c-format
+ msgid "Child process suspended for %lu second"
+ msgid_plural "Child process suspended for %lu seconds"
+-msgstr[0] ""
+-msgstr[1] ""
+-msgstr[2] ""
++msgstr[0] "Proces potomny zatrzymany na %lu sekundê"
++msgstr[1] "Proces potomny zatrzymany na %lu sekundy"
++msgstr[2] "Proces potomny zatrzymany na %lu sekund"
+ 
+ #: src/rcfile.c:575
+ #, c-format
+ msgid "Command HANG is not allowed for user `%s'"
+-msgstr ""
++msgstr "Polecenie HANG nie jest dozwolone dla u¿ytkownika `%s'"
+ 
+ #: src/rcfile.c:853
+ #, c-format
+@@ -986,7 +949,7 @@
+ 
+ #: src/rcfile.y:391
+ msgid "Invalid regular expression (see the above message)"
+-msgstr ""
++msgstr "B³êdne wyra¿enie regularne (p. powy¿szy komunikat)"
+ 
+ #: src/rcfile.y:567
+ msgid "missing replacement value"
+@@ -1331,167 +1294,3 @@
+ #: lib/obstack.c:424 lib/obstack.c:426
+ msgid "memory exhausted"
+ msgstr "pamiêæ wyczerpana"
+-
+-#~ msgid "Try '%s --help' for more information."
+-#~ msgstr "Napisz `%s --help' by uzyskaæ wiêcej informacji."
+-
+-#~ msgid ""
+-#~ "\n"
+-#~ "GNU Anubis is free software; you can redistribute it and/or modify\n"
+-#~ "it under the terms of the GNU General Public License as published by\n"
+-#~ "the Free Software Foundation; either version 2 of the License, or\n"
+-#~ "(at your option) any later version."
+-#~ msgstr ""
+-#~ "\n"
+-#~ "GNU Anubis jest wolnym oprogramowaniem; mo¿esz go\n"
+-#~ "rozprowadzaæ dalej i/lub modyfikowaæ na warunkach Powszechnej\n"
+-#~ "Licencji Publicznej GNU, wydanej przez Fundacjê Wolnego\n"
+-#~ "Oprogramowania - wed³ug wersji 2-giej tej Licencji lub której¶\n"
+-#~ "z pózniejszych wersji."
+-
+-#~ msgid ""
+-#~ "\n"
+-#~ "GNU Anubis is distributed in the hope that it will be useful,\n"
+-#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+-#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+-#~ "GNU General Public License for more details."
+-#~ msgstr ""
+-#~ "\n"
+-#~ "GNU Anubis rozpowszechniany jest z nadzieja, i¿ bêdzie on\n"
+-#~ "u¿yteczny - jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet domy¶lnej\n"
+-#~ "gwarancji PRZYDATNO¦CI HANDLOWEJ albo PRZYDATNO¦CI DO OKRE¦LONYCH\n"
+-#~ "ZASTOSOWAÑ. W celu uzyskania bli¿szych informacji przeczytaj\n"
+-#~ "Powszechn± Licencjê Publiczn± GNU."
+-
+-#~ msgid ""
+-#~ "\n"
+-#~ "You should have received a copy of the GNU General Public License\n"
+-#~ "along with GNU Anubis; if not, write to the Free Software\n"
+-#~ "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA"
+-#~ msgstr ""
+-#~ "\n"
+-#~ "Z pewno¶ci± wraz z niniejszym programem otrzyma³e¶ te¿ egzemplarz\n"
+-#~ "Powszechnej Licencji Publicznej GNU (GNU General Public License);\n"
+-#~ "je¶li za¶ nie - napisz do Free Software Foundation, Inc., \n"
+-#~ "59 Temple Place, Suite 330, Boston, MA 02111-1307  USA"
+-
+-#~ msgid ""
+-#~ "\n"
+-#~ "GNU Anubis is released under the GPL with the additional exemption that\n"
+-#~ "compiling, linking, and/or using OpenSSL is allowed.\n"
+-#~ msgstr ""
+-#~ "\n"
+-#~ "GNU Anubis rozpowszechnia siê pod warunkami GPL z dodatkowym zezwoleniem "
+-#~ "na\n"
+-#~ "kompilacjê, ³±czenie i/lub u¿ycie z OpenSSL.\n"
+-
+-#~ msgid "Usage: anubis [options]\n"
+-#~ msgstr "Sk³adnia: anubis [opcje]\n"
+-
+-#~ msgid " -m, --mode=MODE              Select operation mode."
+-#~ msgstr " -m, --mode=TRYB              Ustawia tryb dzia³ania."
+-
+-#~ msgid ""
+-#~ "                              MODE is either \"transparent\" or \"auth\""
+-#~ msgstr ""
+-#~ "                              Warto¶ci± TRYB jest \"transparent\" b±d¼ "
+-#~ "\"auth\""
+-
+-#~ msgid " -f, --foreground             Foreground mode."
+-#~ msgstr " -f, --foreground             Tryb pierwszoplanowy."
+-
+-#~ msgid " -s, --silent                 Work silently."
+-#~ msgstr " -s, --silent                 Wy³±czenie komunikatów o b³êdach."
+-
+-#~ msgid " -v, --verbose                Work noisily."
+-#~ msgstr ""
+-#~ " -v, --verbose                Wy¶wietla du¿o informacji diagnostycznej."
+-
+-#~ msgid " -D, --debug                  Debug mode."
+-#~ msgstr " -D, --debug                  Tryb odpluskwiania."
+-
+-#~ msgid " --norc                       Ignore system configuration file."
+-#~ msgstr ""
+-#~ " --norc                       Ignorowanie systemowego pliku "
+-#~ "konfiguracyjnego."
+-
+-#~ msgid " --version                    Print version number and copyright."
+-#~ msgstr " --version                    Wy¶wietla numer wersji i copyright."
+-
+-#~ msgid " --help                       It's obvious..."
+-#~ msgstr " --help                       Samo przez siê rozumie..."
+-
+-#~ msgid "malloc() failed. Cannot allocate enough memory."
+-#~ msgstr "malloc() nie powiod³a siê. Brak pamiêci."
+-
+-#~ msgid "realloc() failed. Cannot reallocate enough memory."
+-#~ msgstr ""
+-#~ "ralloc() nie powiod³a siê. Brak pamiêci dla powtórnego przydzielenia."
+-
+-#~ msgid "INTERNAL ERROR (get_response_smtp): buffer exhausted. Please report."
+-#~ msgstr ""
+-#~ "B£¡D WEWNÊTRZNY (get_response_smtp): przekroczony rozmiar bufora. Proszê "
+-#~ "zg³osiæ."
+-
+-#~ msgid "Seeding random number generator..."
+-#~ msgstr "Inicjalizacja generatora liczb losowych..."
+-
+-#~ msgid "Unable to seed random number generator."
+-#~ msgstr "Nie mo¿na zainicjowaæ generatora liczb losowych..."
+-
+-#~ msgid "Write error: %s"
+-#~ msgstr "B³±d zapisu: %s"
+-
+-#~ msgid "Read error: %s"
+-#~ msgstr "B³±d odczytu: %s"
+-
+-#~ msgid "SSLv23_client_method() failed."
+-#~ msgstr "SSLv23_client_method() nie powiod³a siê."
+-
+-#~ msgid "Can't create SSL_CTX object."
+-#~ msgstr "Nie mo¿na utworzyæ obiektu SSL_CTX."
+-
+-#~ msgid "SSL_CTX_set_cipher_list() failed."
+-#~ msgstr "SSL_CTX_set_cipher_list() nie powiod³a siê."
+-
+-#~ msgid "Can't create a new SSL structure for a connection."
+-#~ msgstr "Nie mogê utworzyæ nowej struktury SSL dla pod³±czenia."
+-
+-#~ msgid "SSLv23_server_method() failed."
+-#~ msgstr "SSLv23_server_method() nie powiod³a siê."
+-
+-#~ msgid "SSL_CTX_use_certificate_file() failed."
+-#~ msgstr "SSL_CTX_use_certificate_file() nie powiod³a siê."
+-
+-#~ msgid "SSL_CTX_use_PrivateKey_file() failed."
+-#~ msgstr "SSL_CTX_use_PrivateKey_file() nie powiod³a siê."
+-
+-#~ msgid "Private key does not match the certificate public key."
+-#~ msgstr "Klucz prywatny nie pasuje do klucza publicznego."
+-
+-#~ msgid "%s connection using %s (%u bit)"
+-#~ msgid_plural "%s connection using %s (%u bits)"
+-#~ msgstr[0] "Pod³±czenie %s z u¿yciem %s (%u bit)"
+-#~ msgstr[1] "Pod³±czenie %s z u¿yciem %s (%u bity)"
+-#~ msgstr[2] "Pod³±czenie %s z u¿yciem %s (%u bitów)"
+-
+-#~ msgid "Server public key is %d bit"
+-#~ msgid_plural "Server public key is %d bits"
+-#~ msgstr[0] "Publiczny klucz serwera ma rozmiar %d bit"
+-#~ msgstr[1] "Publiczny klucz serwera ma rozmiar %d bity"
+-#~ msgstr[2] "Publiczny klucz serwera ma rozmiar %d bitów"
+-
+-#~ msgid "Certificate:"
+-#~ msgstr "Certyfikat:"
+-
+-#~ msgid "X509_NAME_oneline [subject] failed!"
+-#~ msgstr "X509_NAME_oneline [temat] nie powiod³a siê!"
+-
+-#~ msgid "Subject: %s"
+-#~ msgstr "Temat: %s"
+-
+-#~ msgid "X509_NAME_oneline [issuer] failed!"
+-#~ msgstr "X509_NAME_oneline [wydawca] nie powiod³a siê!"
+-
+-#~ msgid "Issuer:  %s"
+-#~ msgstr "Wydawca: %s"
