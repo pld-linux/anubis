@@ -163,8 +163,8 @@ if [ "$1" = "0" ]; then
 	/sbin/chkconfig --del anubis
 fi
 
-%postun
-[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+%postun	-p	/sbin/postshell
+-/usr/sbin/fix-info-dir -c %{_infodir}
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
