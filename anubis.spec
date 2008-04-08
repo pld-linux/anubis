@@ -16,7 +16,7 @@ Version:	4.1
 Release:	1
 License:	GPL v3+
 Group:		Applications/Mail
-Source0:	ftp://ftp.gnu.org/gnu/anubis/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnu.org/gnu/anubis/%{name}-%{version}.tar.gz
 # Source0-md5:	fbbf97ee8e973347e0412bfeef14aa6a
 Source1:	%{name}.init
 Source2:	%{name}.pamd
