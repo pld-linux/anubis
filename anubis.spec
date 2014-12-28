@@ -28,7 +28,7 @@ BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.8.3
 BuildRequires:	bison
 BuildRequires:	gdbm-devel
-BuildRequires:	gettext-devel >= 0.16
+BuildRequires:	gettext-tools >= 0.16
 %{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.5}
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 1:1.0.0}
 BuildRequires:	gsasl-devel >= 0.2.3
