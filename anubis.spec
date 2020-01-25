@@ -8,7 +8,6 @@
 %bcond_with	mysql		# enable MySQL support
 %bcond_with	postgres	# enable PostgreSQL support
 #
-%include	/usr/lib/rpm/macros.perl
 Summary:	An outgoing mail processor, and the SMTP tunnel
 Summary(pl.UTF-8):	Procesor wychodzącej poczty i tunel SMTP
 Name:		anubis
