@@ -6,7 +6,7 @@
 %bcond_without	pcre		# disable using pcre library
 %bcond_without	tcp_wrappers	# disable using tcp_wrappers for access control
 %bcond_with	mysql		# enable MySQL support
-%bcond_with	postgres	# enable PostgreSQL support
+%bcond_with	pgsql		# enable PostgreSQL support
 #
 Summary:	An outgoing mail processor, and the SMTP tunnel
 Summary(pl.UTF-8):	Procesor wychodzącej poczty i tunel SMTP
@@ -37,7 +37,7 @@ BuildRequires:	guile-devel >= 5:1.8.0
 %{!?with_gnutls:BuildRequires:	openssl-devel >= 0.9.7d}
 %{?with_pam:BuildRequires:	pam-devel}
 BuildRequires:	pcre-devel
-%{?with_postgres:BuildRequires:	postgres-devel}
+%{?with_pgsql:BuildRequires:	postgresql-devel}
 BuildRequires:	rpm-perlprov
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	texinfo
@@ -125,7 +125,7 @@ rm -f po/stamp-po
 %{?with_pcre:		--with-pcre} \
 %{!?with_gpgme:		--without-gpgme} \
 %{?with_mysql:		--with-mysql} \
-%{?with_postgres:	--with-postgres} \
+%{?with_pgsql:		--with-postgres} \
 %{?with_tcp_wrappers:	--with-tcp-wrappers} \
 	--disable-dependency-tracking
 
