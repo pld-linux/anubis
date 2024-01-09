@@ -1,12 +1,17 @@
-diff -urN anubis-4.0.org/doc/anubis.texi anubis-4.0/doc/anubis.texi
---- anubis-4.0.org/doc/anubis.texi	2004-12-18 12:45:44.000000000 +0100
-+++ anubis-4.0/doc/anubis.texi	2005-02-12 20:35:04.000000000 +0100
-@@ -31,7 +31,7 @@
+--- anubis-4.3/doc/anubis.texi.orig	2024-01-09 19:00:21.735843500 +0100
++++ anubis-4.3/doc/anubis.texi	2024-01-09 19:01:25.858829449 +0100
+@@ -32,10 +32,10 @@ Software Foundation raise funds for GNU
  @ifinfo
  @dircategory Email
  @direntry
--* Anubis: (anubis).             The GNU SMTP message submission daemon.
-+* Anubis: (anubis).			The GNU SMTP message submission daemon.
+-* Anubis: (anubis).                   The GNU SMTP message submission daemon.
+-* anubis: (anubis) Invoking Anubis.   Anubis command line summary.
+-* anubisadm: (anubis) Administrators. Administration of the Anubis User Database. 
+-* anubisusr: (anubis) Users.          User interface to the Anubis User Database.
++* Anubis: (anubis).			The GNU SMTP message submission daemon
++* anubis: (anubis) Invoking Anubis.	Anubis command line summary
++* anubisadm: (anubis) Administrators.	Administration of the Anubis User Database
++* anubisusr: (anubis) Users.		User interface to the Anubis User Database
  @end direntry
  @end ifinfo
  

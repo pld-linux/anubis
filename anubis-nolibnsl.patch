@@ -1,15 +1,17 @@
-diff -urN anubis-4.0.org/configure.ac anubis-4.0/configure.ac
---- anubis-4.0.org/configure.ac	2004-12-18 12:10:03.000000000 +0100
-+++ anubis-4.0/configure.ac	2005-02-12 20:38:18.000000000 +0100
-@@ -95,7 +95,6 @@
- ])
+--- anubis-4.3/configure.ac.orig	2024-01-05 17:09:47.000000000 +0100
++++ anubis-4.3/configure.ac	2024-01-09 19:36:38.614050338 +0100
+@@ -95,8 +95,8 @@ AC_CHECK_FUNCS(getrlimit setrlimit socke
+ AC_CHECK_FUNCS(setegid setregid setresgid seteuid setreuid)
+ AC_CHECK_FUNCS(daemon putenv)
  
- AC_CHECK_LIB(socket, socket)
+-AC_CHECK_LIB(socket, socket)
 -AC_CHECK_LIB(nsl, gethostbyaddr)
++AC_SEARCH_LIBS(socket, socket)
++AC_SEARCH_LIBS(gethostbyaddr, nsl)
  
- AC_SUBST(INCLUDES)
- case $build in
-@@ -397,7 +396,6 @@
+ AM_PATH_LIBGCRYPT([1.7.0], [status_gcrypt=yes], [status_gcrypt=no])
+ AM_CONDITIONAL([GCRYPT_COND], [test "$status_gcrypt" = yes])
+@@ -315,7 +315,6 @@ AC_ARG_WITH(tcp-wrappers,
  	[with_tcp_wrappers=no])
  if test "$with_tcp_wrappers" = "yes"; then
   AC_CHECK_LIB(wrap, main,, with_tcp_wrappers=no)

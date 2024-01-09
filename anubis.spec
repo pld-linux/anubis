@@ -1,37 +1,39 @@
 #
 # Conditional build:
-%bcond_with	gnutls		# use GnuTLS library instead of OpenSSL
-%bcond_without	gpgme		# disable using gpgme library for signing/encrypting with gnupg
-%bcond_without	pam		# disable using of PAM authentication
-%bcond_without	pcre		# disable using pcre library
-%bcond_without	tcp_wrappers	# disable using tcp_wrappers for access control
-%bcond_with	mysql		# enable MySQL support
-%bcond_with	pgsql		# enable PostgreSQL support
+%bcond_with	gnutls		# GnuTLS library instead of OpenSSL
+%bcond_without	gpgme		# signing/encrypting with gnupg using gpgme library
+%bcond_without	pam		# PAM authentication
+%bcond_without	pcre		# PCRE library support
+%bcond_without	tcp_wrappers	# tcp_wrappers for access control
+%bcond_with	mysql		# MySQL support
+%bcond_with	pgsql		# PostgreSQL support
 #
 Summary:	An outgoing mail processor, and the SMTP tunnel
 Summary(pl.UTF-8):	Procesor wychodzącej poczty i tunel SMTP
 Name:		anubis
-Version:	4.1
+Version:	4.3
 Release:	1
 License:	GPL v3+
 Group:		Applications/Mail
-Source0:	http://ftp.gnu.org/gnu/anubis/%{name}-%{version}.tar.gz
-# Source0-md5:	fbbf97ee8e973347e0412bfeef14aa6a
+Source0:	https://ftp.gnu.org/gnu/anubis/%{name}-%{version}.tar.bz2
+# Source0-md5:	32dc9adf1d0daa54bff70f10b4e289b5
 Source1:	%{name}.init
 Source2:	%{name}.pamd
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-nolibnsl.patch
 Patch2:		%{name}-pl.po-update.patch
 URL:		http://www.gnu.org/software/anubis/
-BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1:1.8.3
+BuildRequires:	autoconf >= 2.64
+BuildRequires:	automake >= 1:1.16
 BuildRequires:	bison
+BuildRequires:	flex
 BuildRequires:	gdbm-devel
-BuildRequires:	gettext-tools >= 0.16
+BuildRequires:	gettext-tools >= 0.21
 %{?with_gnutls:BuildRequires:	gnutls-devel >= 1.2.5}
 %{?with_gpgme:BuildRequires:	gpgme-devel >= 1:1.0.0}
 BuildRequires:	gsasl-devel >= 0.2.3
-BuildRequires:	guile-devel >= 5:1.8.0
+BuildRequires:	guile-devel >= 5:2.2.0
+BuildRequires:	libgcrypt-devel >= 1.7.0
 %{?with_tcp_wrappers:BuildRequires:	libwrap-devel}
 %{?with_mysql:BuildRequires:	mysql-devel}
 %{!?with_gnutls:BuildRequires:	openssl-devel >= 0.9.7d}
@@ -43,6 +45,7 @@ BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	texinfo
 Requires(post,preun):	/sbin/chkconfig
 Requires:	identserver
+Requires:	libgcrypt >= 1.7.0
 Requires:	pam >= 0.77.3
 Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -111,23 +114,25 @@ Anubis.
 %patch1 -p1
 %patch2 -p1
 
-rm -f po/stamp-po
+%{__rm} po/stamp-po
 
 %build
 %{__gettextize}
-%{__aclocal} -I m4
+%{__aclocal} -I m4 -I am -I gint -I doc/imprimatur
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
-%{!?with_gnutls:	--without-gnutls} \
-%{!?with_gnutls:	--with-openssl} \
-%{?with_pam:		--with-pam} \
-%{?with_pcre:		--with-pcre} \
-%{!?with_gpgme:		--without-gpgme} \
-%{?with_mysql:		--with-mysql} \
-%{?with_pgsql:		--with-postgres} \
-%{?with_tcp_wrappers:	--with-tcp-wrappers} \
-	--disable-dependency-tracking
+	--disable-dependency-tracking \
+	--disable-silent-rules \
+	%{!?with_gnutls:--without-gnutls} \
+	%{!?with_gpgme:--without-gpgme} \
+	%{?with_mysql:--with-mysql} \
+	%{!?with_gnutls:--with-openssl} \
+	%{?with_pam:--with-pam} \
+	%{?with_pcre:--with-pcre} \
+	%{?with_pgsql:--with-postgres} \
+	%{?with_tcp_wrappers:--with-tcp-wrappers}
 
 %{__make}
 
@@ -140,12 +145,13 @@ install -d $RPM_BUILD_ROOT{/etc/rc.d/init.d,/etc/pam.d,%{_sysconfdir},%{_bindir}
 
 install ./contrib/msg2smtp.pl $RPM_BUILD_ROOT%{_bindir}
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/anubis
-install ./examples/2anubisrc $RPM_BUILD_ROOT%{_sysconfdir}/anubisrc
-%{?with_pam:install %{SOURCE2} $RPM_BUILD_ROOT/etc/pam.d/anubis}
-cp -f ./examples/1anubisrc examples/anubisrc
+cp -p ./examples/2anubisrc $RPM_BUILD_ROOT%{_sysconfdir}/anubisrc
+%{?with_pam:cp -p %{SOURCE2} $RPM_BUILD_ROOT/etc/pam.d/anubis}
+cp -pf ./examples/1anubisrc examples/anubisrc
+
+rm -f $RPM_BUILD_ROOT%{_datadir}/info/dir
 
 %find_lang %{name}
-rm -f $RPM_BUILD_ROOT%{_datadir}/info/dir
 
 %clean
 rm -rf $RPM_BUILD_ROOT
