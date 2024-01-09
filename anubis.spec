@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	gnutls		# GnuTLS library instead of OpenSSL
+%bcond_without	gnutls		# TLS support using GnuTLS library
 %bcond_without	gpgme		# signing/encrypting with gnupg using gpgme library
 %bcond_without	pam		# PAM authentication
 %bcond_without	pcre		# PCRE library support
@@ -36,7 +36,6 @@ BuildRequires:	guile-devel >= 5:2.2.0
 BuildRequires:	libgcrypt-devel >= 1.7.0
 %{?with_tcp_wrappers:BuildRequires:	libwrap-devel}
 %{?with_mysql:BuildRequires:	mysql-devel}
-%{!?with_gnutls:BuildRequires:	openssl-devel >= 0.9.7d}
 %{?with_pam:BuildRequires:	pam-devel}
 BuildRequires:	pcre-devel
 %{?with_pgsql:BuildRequires:	postgresql-devel}
@@ -128,7 +127,6 @@ Anubis.
 	%{!?with_gnutls:--without-gnutls} \
 	%{!?with_gpgme:--without-gpgme} \
 	%{?with_mysql:--with-mysql} \
-	%{!?with_gnutls:--with-openssl} \
 	%{?with_pam:--with-pam} \
 	%{?with_pcre:--with-pcre} \
 	%{?with_pgsql:--with-postgres} \
@@ -176,7 +174,12 @@ fi
 %doc AUTHORS README INSTALL NEWS ChangeLog TODO examples/anubisrc %{?with_pam:examples/pam}
 %attr(754,root,root) /etc/rc.d/init.d/anubis
 %attr(600,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/anubisrc
-%{?with_pam:%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/anubis}
+%if %{with pam}
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/anubis
+%endif
+%if %{with gnutls}
+%attr(755,root,root) %{_bindir}/anubisusr
+%endif
 %attr(755,root,root) %{_sbindir}/anubis
 %attr(755,root,root) %{_sbindir}/anubisadm
 %{_datadir}/anubis
